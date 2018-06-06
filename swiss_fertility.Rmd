@@ -1,0 +1,20 @@
+---
+title: "Swiss Fertility Index by Multiple Factors"
+author: "Norm Cho"
+date: "June 5, 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Plotly Graph
+Fertility is on the Y-axis, Agriculture on the X-axis, Province is the hover point, pct. Catholic is the color, and Education is the size of the marker.
+```{r swiss, message=FALSE}
+library(plotly)
+swiss <- data.frame(province = row.names(swiss),swiss)
+plot_ly (swiss, x=~Agriculture, y=~Fertility, text =~province, type="scatter", color=~Catholic, size=~Education) %>%
+layout(title = "Fertility Rate Using Agriculture, % Catholic, Education Factors") 
+```
+
